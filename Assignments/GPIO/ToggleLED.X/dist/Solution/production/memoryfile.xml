@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="dist/default/production/ToggleLED.X.production.elf">                 
+  <executable name="dist/Solution/production/ToggleLED.X.production.elf">                 
     <memory name="program">                 
       <units>bytes</units>                 
       <length>531968</length>                 
-      <used>1656</used>                     
-      <free>530312</free>                     
+      <used>1816</used>                     
+      <free>530152</free>                     
     </memory>                              
     <memory name="data">              
       <units>bytes</units>                 

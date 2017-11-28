@@ -9,16 +9,15 @@
 #include <stdlib.h>
 #include <xc.h>
 
-//#define USE_SOLUTION
-#ifdef USE_SOLUTION
-    #include "solution.h"
+#ifdef SOLUTION
+    #include "solution/solution.h"
 #endif
 /*
  * 
  */
 int main(int argc, char** argv) {
 
-    #ifdef USE_SOLUTION
+    #ifdef SOLUTION
         solution();
     #else
         // TODO: Write your code here
