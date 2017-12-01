@@ -21,11 +21,11 @@ int main(int argc, char** argv) {
     
     while(1)
     {
-        if(TMR1 >= 1000)
+        if(TMR1 >= 10000)
         {
             LATAbits.LATA3 = !LATAbits.LATA3;
             ms++;
-            TMR1 -= 1000;
+            TMR1 -= 10000;
             if(ms%1000 == 0)
             {
                 LATCbits.LATC1 = !LATCbits.LATC1;

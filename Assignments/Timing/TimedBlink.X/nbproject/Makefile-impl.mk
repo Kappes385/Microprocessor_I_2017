@@ -27,7 +27,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 PROJECTNAME=TimedBlink.X
 
 # Active Configuration
-DEFAULTCONF=default
+DEFAULTCONF=solution
 CONF=${DEFAULTCONF}
 
 # All Configurations
