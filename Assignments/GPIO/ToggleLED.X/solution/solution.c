@@ -1,5 +1,6 @@
 
 #include <xc.h>
+#include <proc/p32mx795f512l.h>
 
 #include "solution.h"
 
@@ -18,7 +19,8 @@ void solution()
             state = PORTAbits.RA2;
             if (state == 0)
             {   // if the button is pressed
-                LATAINV = 1<<3; // invert the 4th bit on LATA register (LATA3)
+                //LATAINV = 1<<3; // invert the 4th bit on LATA register (LATA3)
+                LATAbits.LATA3 = !LATAbits.LATA3; // Toggle LD4
                 state2 = !state2;
                 if (state2 == 0)
                 {
