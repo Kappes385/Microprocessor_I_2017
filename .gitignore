@@ -12,6 +12,7 @@
 *.d
 **/*.X/html/
 **/*.X/nbproject/private/
+**/*.X/nbproject/private/*
 **/*.X/nbproject/Package-*.bash
 **/*.X/build/
 **/*.X/nbbuild/
@@ -24,3 +25,4 @@ funclist
 **/*.X/disassembly/
 *.map
 
+Assignments/GPIO/ToggleLED.X/nbproject/Makefile-Solution.mk
