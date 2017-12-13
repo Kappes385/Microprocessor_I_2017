@@ -15,7 +15,7 @@ extern "C" {
     #include <xc.h>
     
     // These macros are made for the Digilent chipkit Max32
-    #define INITLD() ({TRISACLR = 0b1000; TRISCCLR = 0b10;}) // define the LEDs as outputs
+    #define INITLD() ({LATACLR = 0b1000; TRISACLR = 0b1000; LATCCLR = 0b10; TRISCCLR = 0b10;}) // define the LEDs as outputs
     #define LD4ON()  (LATASET = 0b1000) // set the fourth bit of the LATA register
     #define LD4OFF() (LATACLR = 0b1000) // clear the fourth bit of the LATA register
     #define LD4T()   (LATAINV = 0b1000) // invert the fourth bit of the LATA register
