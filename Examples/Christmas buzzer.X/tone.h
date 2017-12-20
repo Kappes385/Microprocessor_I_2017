@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 
-typedef enum {C = 1, CS, D, DS, E, F, FS, G, GS, A, AS, B} letter;
+typedef enum {C = 1, CS, D, Eb, E, F, FS, G, Ab, A, Bb, B} letter;
 typedef struct
 {
     letter l;

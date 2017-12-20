@@ -1,6 +1,6 @@
 /* 
  * File:   main.c
- * Author: SVU
+ * Author: Steffen Vutborg & Asbjørn Hoffskov Lund
  *
  * Created on 19 December 2017, 15:00
  */
@@ -15,56 +15,157 @@
 /*
  * 
  */
-#define BPM 190
-#define dt 315//1.0/BPM*60*1000
-
+#define BPM 150
+#define O 4
 
 int main(int argc, char** argv) {
     
-    TRISFbits.TRISF2 = 1; // button is input
+    //Setting tonelength
+    const int T4 = (60*1000)/BPM; //quartertone
+    const int T8 = (60*1000)/BPM/2; //Eighth-tone
+    const int T2 = (60*1000)/BPM*2; //half-tone
+    const int T1 = (60*1000)/BPM*4; //You do the math ;-)
     
-    note e = {E, 4, dt};
-    note g = {G, 4, dt};
-    note c = {C, 4, dt};
-    note d = {D, 4, dt};
-    note f = {F, 4, dt};
-    note p = {no_tone, dt};
-    note p2 = {no_tone, dt/10};
-
-    //note song[] = {e, e, e, e, e, e, e, g, c, d, e, p, f, f, f, f, f, e, e, e, e, d, d, e, d, g};
-    //typedef enum {C = 1, CS, D, DS, E, F, FS, G, GS, A, AS, B} letter;
+    //setting tones in range B3 to G5 (range of the song)
+    tone B3 = {B, O-1};
+    tone C4 = {C, O};
+    tone C4s = {CS, O};
+    tone D4 = {D, O};
+    tone E4 = {E, O};
+    tone F4 = {F, O};
+    tone F4s = {FS, O};
+    tone G4 = {G, O};
+    tone Ab4 = {Ab, O};
+    tone A4 = {A, O};
+    tone Bb4 = {Bb, O};
+    tone B4 = {B, O};
+    tone C5 = {C, O+1};
+    tone C5s = {CS, O+1};
+    tone D5 = {D, O+1};
+    tone Eb5 = {Eb, O+1};
+    tone E5 = {E, O+1};
+    tone F5 = {F, O+1};
+    tone F5s = {FS, O+1};
+    tone G5 = {G, O+1};
+    
+    
+    
+    note p = {no_tone, T4};
+    note p2 = {no_tone, T4/10};
     note song[] = {
-        {E , 4, dt}, 
-        {A , 5, dt}, // maybe 5
-        {GS, 4, dt},
-        {G , 4, dt},
+        //Song of the Dragonborn
+        {B3, T4},
+        {E4, T4},
+        {E4, T4},
+        {F4s, T4},
+        {G4, T4},
+        {A4, T4},
+        {A4, T8},
+        {A4, T8},
+        {F4s, T4},
+        {E4, T4},
+        {D4, T4},
+        {E4, T1},
+        //{no_tone, dt},
+        {B3, T4},
+        {E4, T4},
+        {E4, T4},
+        {F4s, T4},
+        {G4, T4},
+        {A4, T8},
+        {A4, T8},
+        {A4, T4},
+        {F4s, T4},
+        {E4, T4},
+        {D4, T4},
+        {E4, T1},
+        //{no_tone, dt},
+        {B4, T8},
+        {B4, T8},
+        {B4, T4},
+        {E4, T4},
+        {F4s, T4},
+        {G4, T4},
+        {A4, T8},
+        {A4, T8},
+        {A4, T4},
+        {F4s, T4},
+        {G4, T4},
+        {A4, T4},
+        {B4, T1},
+        //{no_tone, dt},
+        {B3, T4},
+        {E4, T4},
+        {E4, T4},
+        {F4s, T4},
+        {G4, T4},
+        {A4, T8},
+        {A4, T8},
+        {A4, T4},
+        {F4s, T4},
+        {E4, T4},
+        {D4, T4},
+        {E4, T1},
+        {no_tone, T2},
+        //Morrowind section
+        {E4, T4},
+        {F4s, T4},
+        {G4, T2},
+        {G4, T2},
+        {G4, T4},
+        {A4, T4},
+        {B4, T2},
+        {B4, T2},
+        {B4, T4},
+        {D5, T4},
+        {A4, T1},
+        {G4, T4},
+        {F4s, T4},
+        {E4, T1},
+        {E4, T4},
+        {F4s, T4},
+        {G4, T2},
+        {G4, T2},
+        {G4, T4},
+        {A4, T4},
+        {B4, T2},
+        {B4, T2},
+        {B4, T4},
+        {D5, T4},
+        {E5, T1},
+        {D5, T4},
+        {F5s, T4},
+        {E5, T1},
+        {E5, T4},
+        {F5s, T4},
+        {G5, T2},
+        {F5s, T2},
+        {E5, T2},
+        {D5, T2},
+        {C5, T2},
+        {B4, T2},
+        {A4, T2},
+        {G4, T4},
+        {B4, T4},
+        {A4, T1}
+        //Dovahkiin part missing
+            
         
-        {E , 4, 2*dt},
-        {no_tone, dt},
-        {E , 4, dt/2},
-        {E , 4, dt/2},
-        
-        {E , 4, dt}, 
-        {A , 5, dt}, // maybe 5
-        {GS, 4, dt},
-        {G , 4, dt},
-        
-        {F , 4, 2*dt},
-        {no_tone, 2*dt},
-         
-        {E , 4, dt}, 
-        {A , 5, dt}, // maybe 5
-        {GS, 4, dt},
-        {G , 4, dt}       
     };
+    
+    
+    
     init_tone();
+    AD1PCFG = 0xFFFF;
+    TRISB &= ~(0x3FF);
     
     while(1)
     {
         int i;
         //for (i = 0; i < 26; i++)
-        for (i = 0; i < 18; i++)
+        for (i = 0; i < 91; i++)
         {
+            LATB ^= 0x3FF;
             play_note(song[i]);
             play_note(p2);
         }
@@ -72,6 +173,7 @@ int main(int argc, char** argv) {
         play_note(p);
         play_note(p);
         play_note(p);
+        
         
     }
     return (EXIT_SUCCESS);
